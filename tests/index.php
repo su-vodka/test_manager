@@ -15,11 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>成績管理</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
   <header>
     <h1>成績管理</h1>
+    <nav>
+      <a href="index.php">テスト一覧</a>
+      <a href="create.php">テスト作成</a>
+    </nav>
   </header>
   <main>
     <h2>テスト一覧</h2>
@@ -28,16 +32,17 @@
         <th>ID</th>
         <th>学年</th>
         <th>テスト名</th>
+        <th>編集</th>
       </tr>
       <?php foreach ($tests as $test): ?>
         <tr>
           <td><?php echo htmlspecialchars($test['id'], ENT_QUOTES, 'UTF-8'); ?></td>
-          <td><?php echo htmlspecialchars($test['year'], ENT_QUOTES, 'UTF-8'); ?></td>
+          <td><?php echo htmlspecialchars($test['year'], ENT_QUOTES, 'UTF-8'); ?>年</td>
           <td><?php echo htmlspecialchars($test['name'], ENT_QUOTES, 'UTF-8'); ?></td>
+          <td><a href="edit.php?id=<?php echo htmlspecialchars($test['id'], ENT_QUOTES); ?>">編集</a></td>
         </tr>
       <?php endforeach; ?>
     </table>
-    <p><a href="create.php">テスト作成</a></p>
   </main>
 </body>
 </html>

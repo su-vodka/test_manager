@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>成績管理</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
   <header>
     <h1>成績管理</h1>
+    <nav>
+      <a href="index.php">テスト一覧</a>
+      <a href="create.php">テスト作成</a>
+    </nav>
   </header>
   <main>
     <h2>テスト作成</h2>
