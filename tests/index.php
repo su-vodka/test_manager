@@ -33,6 +33,7 @@
         <th>学年</th>
         <th>テスト名</th>
         <th>編集</th>
+        <th>削除</th>
       </tr>
       <?php foreach ($tests as $test): ?>
         <tr>
@@ -40,6 +41,7 @@
           <td><?php echo htmlspecialchars($test['year'], ENT_QUOTES, 'UTF-8'); ?>年</td>
           <td><?php echo htmlspecialchars($test['name'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><a href="edit.php?id=<?php echo htmlspecialchars($test['id'], ENT_QUOTES); ?>">編集</a></td>
+          <td><a href="delete.php?id=<?php echo htmlspecialchars($test['id'], ENT_QUOTES); ?>">削除</a></td>
         </tr>
       <?php endforeach; ?>
     </table>
