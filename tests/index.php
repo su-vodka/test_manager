@@ -27,7 +27,7 @@
   </header>
   <main>
     <h2>テスト一覧</h2>
-    <table border="1">
+    <table>
       <tr>
         <th>ID</th>
         <th>学年</th>

@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+table , th , td {
+  border : 1px solid #000;
+  border-collapse : collapse;
+  padding : 8px;
+}
+
 nav a {
   margin-right: 18px;
 }
