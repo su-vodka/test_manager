@@ -1,6 +1,6 @@
 <!-- db接続 -->
 <?php
-  require('dbconnect.php');
+  require('../dbconnect.php');
 ?>
 
 <!-- テスト一覧取得 -->
@@ -23,6 +23,7 @@
     <nav>
       <a href="index.php">テスト一覧</a>
       <a href="create.php">テスト作成</a>
+      <a href="../students/index.php">生徒一覧</a>
     </nav>
   </header>
   <main>

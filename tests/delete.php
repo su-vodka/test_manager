@@ -1,6 +1,6 @@
 <!-- db接続 -->
 <?php
-  require('dbconnect.php');
+  require('../dbconnect.php');
 ?>
 
 <!-- テスト取得 -->
