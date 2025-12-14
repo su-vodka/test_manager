@@ -23,6 +23,8 @@
     <nav>
       <a href="../tests/index.php">テスト一覧</a>
       <a href="../tests/create.php">テスト作成</a>
+      <a href="index.php">生徒一覧</a>
+      <a href="create.php">生徒登録</a>
     </nav>
   </header>
   <main>
