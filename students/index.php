@@ -34,7 +34,7 @@
         <th>ID</th>
         <th>学年</th>
         <th>クラス</th>
-        <th>出席番号</th>
+        <th>学生番号</th>
         <th>氏名</th>
         <th>編集</th>
         <th>削除</th>

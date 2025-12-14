@@ -37,7 +37,7 @@
           <dd><?php echo htmlspecialchars($student['year'], ENT_QUOTES);?></dd>
           <dt>クラス</dt>
           <dd><?php echo htmlspecialchars($student['class'], ENT_QUOTES);?></dd>
-          <dt>出席番号</dt>
+          <dt>学生番号</dt>
           <dd><?php echo htmlspecialchars($student['number'], ENT_QUOTES);?></dd>
           <dt>氏名</dt>
           <dd><?php echo htmlspecialchars($student['name'], ENT_QUOTES);?></dd>

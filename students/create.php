@@ -25,7 +25,7 @@
           <dd><input type="number" name="year" required></dd>
           <dt>クラス</dt>
           <dd><input type="text" name="class" required></dd>
-          <dt>出席番号</dt>
+          <dt>学生番号</dt>
           <dd><input type="text" name="number" required></dd>
           <dt>氏名</dt>
           <dd><input type="text" name="name" required></dd>
