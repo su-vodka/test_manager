@@ -19,13 +19,8 @@
 </head>
 <body>
   <header>
-    <h1>成績管理</h1>
-    <nav>
-      <a href="../tests/index.php">テスト一覧</a>
-      <a href="../tests/create.php">テスト作成</a>
-      <a href="index.php">生徒一覧</a>
-      <a href="create.php">生徒登録</a>
-    </nav>
+    <!-- header.htmlを読み込み -->
+    <?php include '../header.html'; ?>
   </header>
   <main>
     <h2>生徒一覧</h2>

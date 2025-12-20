@@ -21,19 +21,16 @@
 </head>
 <body>
   <header>
-    <h1>成績管理</h1>
-    <nav>
-      <a href="index.php">テスト一覧</a>
-      <a href="create.php">テスト作成</a>
-      <a href="../students/index.php">生徒一覧</a>
-      <a href="../students/create.php">生徒登録</a>
-    </nav>
+    <!-- header.htmlを読み込み -->
+    <?php include '../header.html'; ?>
   </header>
   <main>
     <h2>テスト編集</h2>
       <form action="delete_do.php" method="post">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($test['id'], ENT_QUOTES, 'UTF-8'); ?>">
         <dl>
+          <dt>ID</dt>
+          <dd><?php echo htmlspecialchars($test['id'], ENT_QUOTES); ?></dd>
           <dt>学年</dt>
           <dd><?php echo htmlspecialchars($test['year'], ENT_QUOTES);?></dd>
           <dt>テスト名</dt>

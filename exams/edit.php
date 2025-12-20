@@ -10,11 +10,11 @@
   $exams = $statement->fetch();
 ?>
 
-<!-- テストID取得 -->
+<!-- セレクトボックス用テストID取得 -->
 <?php
   $test_id = $db->query('SELECT id, name FROM tests');
 ?>
-<!-- 生徒ID取得 -->
+<!-- セレクトボックス用生徒ID取得 -->
 <?php
   $student_id = $db->query('SELECT id, name FROM students');
 ?>
@@ -33,13 +33,8 @@
 </head>
 <body>
   <header>
-    <h1>成績管理</h1>
-    <nav>
-      <a href="../tests/index.php">テスト一覧</a>
-      <a href="../tests/create.php">テスト作成</a>
-      <a href="index.php">生徒一覧</a>
-      <a href="create.php">生徒登録</a>
-    </nav>
+    <!-- header.htmlを読み込み -->
+    <?php include '../header.html'; ?>
   </header>
   <main>
     <h2>成績編集</h2>
@@ -47,7 +42,9 @@
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($exams['id'], ENT_QUOTES, 'UTF-8'); ?>">
         <dl>
           <dt>ID</dt>
-          <dd><?php echo htmlspecialchars($exams['id'], ENT_QUOTES); ?></dd>
+          <dd>
+            <?php echo htmlspecialchars($exams['id'], ENT_QUOTES); ?>
+          </dd>
 
           <dt>テストID</dt>
           <dd>

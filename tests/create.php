@@ -9,13 +9,8 @@
 </head>
 <body>
   <header>
-    <h1>成績管理</h1>
-    <nav>
-      <a href="index.php">テスト一覧</a>
-      <a href="create.php">テスト作成</a>
-      <a href="../students/index.php">生徒一覧</a>
-      <a href="../students/create.php">生徒登録</a>
-    </nav>
+    <!-- header.htmlを読み込み -->
+    <?php include '../header.html'; ?>
   </header>
   <main>
     <h2>テスト作成</h2>
