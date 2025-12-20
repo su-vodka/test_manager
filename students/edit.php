@@ -34,6 +34,8 @@
       <form action="edit_do.php" method="post">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($student['id'], ENT_QUOTES, 'UTF-8'); ?>">
         <dl>
+          <dt>ID</dt>
+          <dd><?php echo htmlspecialchars($student['id'], ENT_QUOTES); ?></dd>
           <dt>学年</dt>
           <dd><input type="number" name="year" value="<?php echo htmlspecialchars($student['year'], ENT_QUOTES);?>" required></dd>
           <dt>クラス</dt>
@@ -43,7 +45,7 @@
           <dt>氏名</dt>
           <dd><input type="text" name="name" value="<?php echo htmlspecialchars($student['name'], ENT_QUOTES);?>" required></dd>
         </dl>
-        <button type="submit">作成</button>
+        <button type="submit">更新</button>
       </form>
     </table>
   </main>

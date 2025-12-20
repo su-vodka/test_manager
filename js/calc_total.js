@@ -1,3 +1,4 @@
+// 5教科の合計点を自動計算します。GitHub Copilotによる生成コードです。
 (function(){
   const ids = ['japanese','math','english','science','social_studies'];
   function calcTotal(){
