@@ -85,7 +85,7 @@
           <dt>合計</dt>
           <dd><input type="number" name="total" id="total" value="<?php echo htmlspecialchars($exams['total'], ENT_QUOTES);?>" readonly require></dd>
         </dl>
-        <button type="submit">更新</button>
+        <div><a href="index.php">キャンセル</a> | <button type="submit" onclick="return confirm('本当に更新しますか？');">更新する</button></div>
       </form>
     </table>
   </main>

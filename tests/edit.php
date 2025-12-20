@@ -36,7 +36,7 @@
           <dt>テスト名</dt>
           <dd><input type="text" name="name" value="<?php echo htmlspecialchars($test['name'], ENT_QUOTES);?>" required></dd>
         </dl>
-        <button type="submit">更新</button>
+        <div><a href="index.php">キャンセル</a> | <button type="submit" onclick="return confirm('本当に更新しますか？');">更新する</button></div>
       </form>
     </table>
   </main>

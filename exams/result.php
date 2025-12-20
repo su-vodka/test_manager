@@ -1,3 +1,19 @@
+<!-- リクエストがなければindex.phpへリダイレクト -->
+<?php
+  if (!isset($_REQUEST['test_id'])) {
+    header('Location: index.php');
+    exit();
+  }
+?>
+
+<!-- 並び替えの初期値 -->
+<?php
+  if (!isset($_REQUEST['order'])) {
+    $_REQUEST['order'] = 'e.student_id';
+  }
+  $order = $_REQUEST['order'];
+?>
+
 <!-- db接続 -->
 <?php
   require('../dbconnect.php');
@@ -5,12 +21,22 @@
 
 <!-- 成績一覧取得 -->
 <?php
-  $exams = $db->query('SELECT e.*, t.name AS test_name, s.name AS student_name FROM tests t, students s, exams e WHERE e.test_id=t.id AND e.student_id=s.id');
+  $exams = $db->prepare("SELECT e.*, t.name AS test_name, s.name AS student_name, s.id AS student_id FROM tests t, students s, exams e WHERE e.test_id=t.id AND e.student_id=s.id AND t.id=? ORDER BY $order ASC");
+  $exams->bindParam(1, $_REQUEST['test_id'], PDO::PARAM_INT);
+  $exams->execute();
 ?>
 
 <!-- リンク用テストID取得 -->
 <?php
   $test_id = $db->query('SELECT id, name FROM tests');
+?>
+
+<!-- 選択中のテスト名取得 -->
+<?php
+  $test_name = $db->prepare('SELECT name FROM tests WHERE id=?');
+  $test_name->bindParam(1, $_REQUEST['test_id'], PDO::PARAM_INT);
+  $test_name->execute();
+  $selected_name = $test_name->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +60,10 @@
           <a href="result.php?test_id=<?php echo htmlspecialchars($value['id']); ?>"><?php echo htmlspecialchars($value['name'], ENT_QUOTES, 'UTF-8'); ?></a> / 
         <?php endforeach; ?>
       </p>
+      <p>選択中：<?php echo htmlspecialchars($selected_name['name'], ENT_QUOTES, 'UTF-8'); ?></p>
     <table>
       <tr>
-        <th>ID</th>
-        <th>テスト</th>
+        <th>学生番号</th>
         <th>名前</th>
         <th>国語</th>
         <th>数学</th>
@@ -45,13 +71,10 @@
         <th>理科</th>
         <th>社会</th>
         <th>合計</th>
-        <th>編集</th>
-        <th>削除</th>
       </tr>
       <?php foreach ($exams as $exam): ?>
         <tr>
-          <td><?php echo htmlspecialchars($exam['id'], ENT_QUOTES, 'UTF-8'); ?></td>
-          <td><?php echo htmlspecialchars($exam['test_name'], ENT_QUOTES, 'UTF-8'); ?></td>
+          <td><?php echo htmlspecialchars($exam['student_id'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['student_name'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['japanese'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['math'], ENT_QUOTES, 'UTF-8'); ?></td>
@@ -59,8 +82,6 @@
           <td><?php echo htmlspecialchars($exam['science'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['social_studies'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['total'], ENT_QUOTES, 'UTF-8'); ?></td>
-          <td><a href="edit.php?id=<?php echo htmlspecialchars($exam['id'], ENT_QUOTES); ?>">編集</a></td>
-          <td><a href="delete.php?id=<?php echo htmlspecialchars($exam['id'], ENT_QUOTES); ?>">削除</a></td>
         </tr>
       <?php endforeach; ?>
     </table>
