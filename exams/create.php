@@ -21,29 +21,7 @@
   <link rel="stylesheet" href="../css/style.css" />
 
   <!-- 合計自動計算 -->
-  <script>
-    (function(){
-      const ids = ['kokugo','sugaku','eigo','rika','syakai'];
-      function calcTotal(){
-        let total = 0;
-        ids.forEach(id => {
-          const el = document.getElementById(id);
-          if (!el) return;
-          const v = parseInt(el.value, 10);
-          if (!isNaN(v)) total += v;
-        });
-        const out = document.getElementById('goukei');
-        if (out) out.value = total;
-      }
-      document.addEventListener('DOMContentLoaded', () => {
-        ids.forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.addEventListener('input', calcTotal);
-        });
-        calcTotal();
-      });
-    })();
-  </script>
+  <script src="../js/calc_total.js"></script>
 
 </head>
 <body>
@@ -81,17 +59,17 @@
               <?php endforeach; ?>
              </select></dd>
           <dt>国語</dt>
-          <dd><input type="number" name="kokugo" id="kokugo" min="0" max="100" required></dd>
+          <dd><input type="number" name="japanese" id="japanese" min="0" max="100" required></dd>
           <dt>数学</dt>
-          <dd><input type="number" name="sugaku" id="sugaku" min="0" max="100" required></dd>
+          <dd><input type="number" name="math" id="math" min="0" max="100" required></dd>
           <dt>英語</dt>
-          <dd><input type="number" name="eigo" id="eigo" min="0" max="100" required></dd>
+          <dd><input type="number" name="english" id="english" min="0" max="100" required></dd>
           <dt>理科</dt>
-          <dd><input type="number" name="rika" id="rika" min="0" max="100" required></dd>
+          <dd><input type="number" name="science" id="science" min="0" max="100" required></dd>
           <dt>社会</dt>
-          <dd><input type="number" name="syakai" id="syakai" min="0" max="100" required></dd>
+          <dd><input type="number" name="social_studies" id="social_studies" min="0" max="100" required></dd>
           <dt>合計</dt>
-          <dd><input type="number" name="goukei" id="goukei" readonly required></dd>
+          <dd><input type="number" name="total" id="total" readonly required></dd>
         </dl>
         <button type="submit">作成</button>
       </form>
