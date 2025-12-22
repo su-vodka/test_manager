@@ -32,11 +32,11 @@
           <dt>ID</dt>
           <dd><?php echo htmlspecialchars($student['id'], ENT_QUOTES); ?></dd>
           <dt>学年</dt>
-          <dd><input type="number" name="year" value="<?php echo htmlspecialchars($student['year'], ENT_QUOTES);?>" required></dd>
+          <dd><input type="number" name="year" min="1" max="9" value="<?php echo htmlspecialchars($student['year'], ENT_QUOTES);?>" required></dd>
           <dt>クラス</dt>
           <dd><input type="text" name="class" value="<?php echo htmlspecialchars($student['class'], ENT_QUOTES);?>" required></dd>
           <dt>学生番号</dt>
-          <dd><input type="text" name="number" value="<?php echo htmlspecialchars($student['number'], ENT_QUOTES);?>" required></dd>
+          <dd><input type="text" name="number" min="1" max="99999" value="<?php echo htmlspecialchars($student['number'], ENT_QUOTES);?>" required></dd>
           <dt>氏名</dt>
           <dd><input type="text" name="name" value="<?php echo htmlspecialchars($student['name'], ENT_QUOTES);?>" required></dd>
         </dl>

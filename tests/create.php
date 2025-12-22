@@ -17,7 +17,7 @@
       <form action="create_do.php" method="post">
         <dl>
           <dt>学年</dt>
-          <dd><input type="number" name="year" required></dd>
+          <dd><input type="number" name="year" min="1" max="9" required></dd>
           <dt>テスト名</dt>
           <dd><input type="text" name="name" required></dd>
         </dl>

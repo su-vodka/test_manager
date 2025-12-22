@@ -32,7 +32,7 @@
           <dt>ID</dt>
           <dd><?php echo htmlspecialchars($test['id'], ENT_QUOTES); ?></dd>
           <dt>学年</dt>
-          <dd><input type="number" name="year" value="<?php echo htmlspecialchars($test['year'], ENT_QUOTES);?>" required></dd>
+          <dd><input type="number" name="year" min="1" max="9" value="<?php echo htmlspecialchars($test['year'], ENT_QUOTES);?>" required></dd>
           <dt>テスト名</dt>
           <dd><input type="text" name="name" value="<?php echo htmlspecialchars($test['name'], ENT_QUOTES);?>" required></dd>
         </dl>

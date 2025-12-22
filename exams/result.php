@@ -8,10 +8,10 @@
 
 <!-- 並び替えの初期値 -->
 <?php
-  if (!isset($_REQUEST['order'])) {
-    $_REQUEST['order'] = 'e.student_id';
+  if (!isset($_REQUEST['sort'])) {
+    $_REQUEST['sort'] = 'student_number';
   }
-  $order = $_REQUEST['order'];
+  $sort = $_REQUEST['sort'];
 ?>
 
 <!-- db接続 -->
@@ -21,7 +21,7 @@
 
 <!-- 成績一覧取得 -->
 <?php
-  $exams = $db->prepare("SELECT e.*, t.name AS test_name, s.name AS student_name, s.id AS student_id FROM tests t, students s, exams e WHERE e.test_id=t.id AND e.student_id=s.id AND t.id=? ORDER BY $order ASC");
+  $exams = $db->prepare("SELECT e.*, t.name AS test_name, s.name AS student_name, s.id AS student_id, s.number AS student_number FROM tests t, students s, exams e WHERE e.test_id=t.id AND e.student_id=s.id AND t.id=? ORDER BY $sort ASC");
   $exams->bindParam(1, $_REQUEST['test_id'], PDO::PARAM_INT);
   $exams->execute();
 ?>
@@ -61,20 +61,67 @@
         <?php endforeach; ?>
       </p>
       <p>選択中：<?php echo htmlspecialchars($selected_name['name'], ENT_QUOTES, 'UTF-8'); ?></p>
+      <!-- <p>並び替え：<?php echo htmlspecialchars($sort, ENT_QUOTES, 'UTF-8'); ?></p> -->
     <table>
       <tr>
-        <th>学生番号</th>
-        <th>名前</th>
-        <th>国語</th>
-        <th>数学</th>
-        <th>英語</th>
-        <th>理科</th>
-        <th>社会</th>
-        <th>合計</th>
+        <th>学生番号<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=student_number">
+          <?php if($sort == 'student_number') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?></a></th>
+        <th>名前<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=student_name">
+          <?php if($sort == 'student_name') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?></a></th>
+        <th>国語<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=japanese">
+          <?php if($sort == 'japanese') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?>
+        </a></th>
+        <th>数学<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=math">
+          <?php if($sort == 'math') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?>
+        </a></th>
+        <th>英語<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=english">
+          <?php if($sort == 'english') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?>
+        </a></th>
+        <th>理科<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=science">
+          <?php if($sort == 'science') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?>
+        </a></th>
+        <th>社会<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=social_studies">
+          <?php if($sort == 'social_studies') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?>
+        </a></th>
+        <th>合計<a href="result.php?test_id=<?php echo htmlspecialchars($_REQUEST['test_id']); ?>&sort=total">
+          <?php if($sort == 'total') {
+            echo ('▼') ;
+          } else {
+            echo ('▽');
+          } ?>
+        </a></th>
       </tr>
       <?php foreach ($exams as $exam): ?>
         <tr>
-          <td><?php echo htmlspecialchars($exam['student_id'], ENT_QUOTES, 'UTF-8'); ?></td>
+          <td><?php echo htmlspecialchars($exam['student_number'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['student_name'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['japanese'], ENT_QUOTES, 'UTF-8'); ?></td>
           <td><?php echo htmlspecialchars($exam['math'], ENT_QUOTES, 'UTF-8'); ?></td>

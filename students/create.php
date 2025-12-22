@@ -17,11 +17,11 @@
       <form action="create_do.php" method="post">
         <dl>
           <dt>学年</dt>
-          <dd><input type="number" name="year" required></dd>
+          <dd><input type="number" min="1" max="9" name="year" required></dd>
           <dt>クラス</dt>
-          <dd><input type="text" name="class" required></dd>
+          <dd><input type="text" min="1" max="9" name="class" required></dd>
           <dt>学生番号</dt>
-          <dd><input type="text" name="number" required></dd>
+          <dd><input type="text" min="1" max="99999" name="number" required></dd>
           <dt>氏名</dt>
           <dd><input type="text" name="name" required></dd>
         </dl>
