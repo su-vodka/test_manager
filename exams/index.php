@@ -29,6 +29,7 @@
   </header>
   <main>
     <h2>成績一覧</h2>
+      <p><a href="download.php">CSVダウンロード</a></p>
       <p>絞り込み：
         <?php foreach($test_id as $value): ?>
           <a href="result.php?test_id=<?php echo htmlspecialchars($value['id']); ?>"><?php echo htmlspecialchars($value['name'], ENT_QUOTES, 'UTF-8'); ?></a> / 
